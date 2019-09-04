@@ -6,7 +6,9 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     const twiml = new MessagingResponse();
 
-    twiml.message('The Robots are coming! Head for the hills!');
+    if (req.body.Body == 'hello') {
+        twiml.message('Hi!');
+    }
 
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());

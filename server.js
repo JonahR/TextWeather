@@ -1,9 +1,11 @@
+const bodyParser = require('body-parser');
 const http = require('http');
 const express = require('express');
 const sms = require('./routes/sms');
 
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/sms', sms);
 
 http.createServer(app).listen(1337, () => {
