@@ -2,6 +2,11 @@ const bodyParser = require('body-parser');
 const http = require('http');
 const express = require('express');
 const sms = require('./routes/sms');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/textWeather', { useNewUrlParser: true })
+.then(() => console.log('Connected to MongoDB...'))
+.catch(() => console.error('Unable to connect to MongoDB...'))
 
 const app = express();
 

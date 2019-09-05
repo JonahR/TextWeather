@@ -7,7 +7,9 @@ const User = mongoose.model('User', new mongoose.Schema({
     wind: {
         speed: Boolean
     },
-    phoneNumber: String
+    phoneNumber: {
+        type: String,
+    }
 }));
 
 exports.User = User;
