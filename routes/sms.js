@@ -1,22 +1,35 @@
-const config = require('../config');
 const express = require('express');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
+const createMessage = require('../services/createMessage');
 const getWeatherByCityName = require('../services/weatherByCity');
-const client = require('twilio')(config.twilio.accountSid, config.twilio.authToken);
-
+const { User } = require('../models/user'); 
 
 const router = express.Router();
 
+let jonah = new User({
+    main: {
+        temp: true
+    },
+    wind: {
+        speed: true
+    },
+    phoneNumer: '+16512950514'
+})
+
 router.post('/', async (req, res) => {
-    const body = req.body.Body;
+    const textBody = req.body.Body;
+    let message;
 
-    const data = await getWeatherByCityName(body);
+    try{       
+        const weatherData = await getWeatherByCityName(textBody);
+        message = createMessage(jonah, weatherData);
+    } catch (err) {
+        message = err.response.data.message
+    }
 
-    const temp = data.main.temp;
-    
     const twiml = new MessagingResponse();
     
-    twiml.message(temp);
+    twiml.message(message);
 
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());
