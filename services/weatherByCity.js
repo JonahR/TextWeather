@@ -1,11 +1,16 @@
 const config = require('../config');
 const axios = require('axios');
 
-const apiURL = 'https://api.openweathermap.org/data/2.5/weather';
+const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
+const METRIC = 'metric';
+const IMPERIAL = 'imperial';
 
 async function getWeatherByCityName(city, units){
-    const response = await axios.get(`${apiURL}?q=${city}&units=${units}&APPID=${config.openWeather.apiKey}`);
-    return response.data;
+    return axios.get(`${API_URL}?q=${city}&units=${units ? METRIC : IMPERIAL}&APPID=${config.openWeather.apiKey}`, { validateStatus: false} )
+    .then(response => {
+        return response.data
+    })
+    .catch(error => {throw error});
 }
 
 module.exports = getWeatherByCityName;

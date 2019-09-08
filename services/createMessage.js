@@ -2,6 +2,10 @@ function createMessage(user, weatherData) {
     const metric = user.metric;
 
     let message = '';
+    
+    if(weatherData.cod !== 200) {
+        return weatherData.message
+    }
     if(user.main) {
         const main = weatherData.weather[0].main;
         message = `${message}Current: ${main}\n`;
@@ -63,6 +67,9 @@ function createMessage(user, weatherData) {
             timeOfDay = 'PM'
         }
         message = `${message}Sunset: ${metric ? hours + ':' + minutes : hours + ':' + minutes + ' ' + timeOfDay}\n`
+    }
+    if(user.notRegistered) {
+        message = `${message}Sign up: Soon to be made\n`
     }
 
     return message;

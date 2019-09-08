@@ -10,9 +10,8 @@ router.post('/', async (req, res) => {
     let message;
 
     try {       
-        const user = await getUserFromDB(req.body.From); // What happen if there is no match? or Errors out?
-        units = user.metric ? 'metric' : 'imperial';
-        const weatherData = await getWeatherByCityName(req.body.Body, units); // What happen if errors out? Add metric/imperial
+        const user = await getUserFromDB(req.body.From);
+        const weatherData = await getWeatherByCityName(req.body.Body, user.metric); // What happen if errors out? Add metric/imperia
         message = createMessage(user, weatherData);
     } catch (err) {
         console.error(err);
