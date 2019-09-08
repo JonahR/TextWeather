@@ -7,14 +7,15 @@ const getUserFromDB = require('../services/getUserFromDB');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    const textBody = req.body.Body;
     let message;
-    const user = await getUserFromDB(req.body.From);
+
     try {       
-        const weatherData = await getWeatherByCityName(textBody);
+        const user = await getUserFromDB(req.body.From); // What happen if there is no match? or Errors out?
+        units = user.metric ? 'metric' : 'imperial';
+        const weatherData = await getWeatherByCityName(req.body.Body, units); // What happen if errors out? Add metric/imperial
         message = createMessage(user, weatherData);
     } catch (err) {
-        console.log(err);
+        console.error(err);
     }
 
     const twiml = new MessagingResponse();
