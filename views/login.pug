@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1 Login
+    form(method='POST' action='/login')
+        div
+            label(for='phoneNumber') Phone Number
+            input(type='text' id='phoneNumber' name='phoneNumber')
+        div
+            label(for='password') Password
+            input(type='password' id='password' name='password')
+        button(type='submit') Log In

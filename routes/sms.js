@@ -1,8 +1,8 @@
 const express = require('express');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
-const createMessage = require('../services/createMessage');
-const getWeatherByCityName = require('../services/weatherByCity');
-const getUserFromDB = require('../services/getUserFromDB');
+const createMessage = require('../helpers/createMessage');
+const getWeatherByCityName = require('../helpers/weatherByCity');
+const getUserFromDB = require('../helpers/getUserFromDB');
 
 const router = express.Router();
 

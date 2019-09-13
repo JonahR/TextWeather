@@ -1,0 +1,45 @@
+extends layout
+
+block content
+    h1 Preferences
+
+    form(method='POST' action='/profile')
+        ul
+            li Metric
+                input(type='checkbox' name='metric' checked=user.metric)
+            li Weather
+                ul
+                    li Main
+                        input(type='checkbox' name='main' value='1' checked=user.main)
+                    li Description
+                        input(type='checkbox' name='description' value='1' checked=user.description)
+            li Main
+                ul
+                    li Temperature
+                        input(type='checkbox' name='temp' checked=user.temp)
+                    li Pressure
+                        input(type='checkbox' name='pressure' checked=user.pressure)
+                    li Humidity
+                        input(type='checkbox' name='humidity' checked=user.humidity)
+                    li Minimum Temperature
+                        input(type='checkbox' name='temp_min' checked=user.temp_min)
+                    li Maximum Temperature
+                        input(type='checkbox' name='temp_max' checked=user.temp_max)
+            li Wind
+                ul
+                    li Speed
+                        input(type='checkbox' name='speed' checked=user.speed)
+                    li Direction
+                        input(type='checkbox' name='deg' checked=user.deg)
+            li Clouds
+                ul
+                    li Coverage
+                        input(type='checkbox' name='all' checked=user.all)
+            li Sun
+                ul
+                    li Sunrise
+                        input(type='checkbox' name='sunrise' checked=user.sunrise)
+                    li Sunset
+                        input(type='checkbox' name='sunset' checked=user.sunset)
+        button(type='submit') Save
+

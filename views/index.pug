@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  .container
+    // Jumbotron Header
+    header.jumbotron.my-4
+      h1.display-3 Welcome to TextWeather!
+      p.lead
+        | TextWeather is a SMS based weather app. Simply send a city name to 
+        strong (763) 402-9479 
+        | to get your forecast. Create an account to get access to multiple forecasts per a day and a custom profile.
+      a.btn.btn-primary.btn-lg(href='register') Create Account
+    // Page Features
+    .row.text-center
+      .col-lg-6.col-md-6.mb-4
+        .card.h-100
+          img.card-img-top(src='/img/imperial.jpeg' alt='preferences')
+          .card-body
+            h4.card-title Preferences
+            p.card-text
+              | Create an account to customize your weather forecast.
+      .col-lg-6.col-md-6.mb-4
+        .card.h-100
+          img.card-img-top(src='/img/metric.jpeg' alt='metric/imperial')
+          .card-body
+            h4.card-title Metric
+            p.card-text
+              | Recieve your forecast in metric or imperial units.

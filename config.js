@@ -6,6 +6,9 @@ const config = {
     },
     openWeather: {
         apiKey: process.env.OPENWEATHER_API_KEY
+    },
+    session: {
+        secret: process.env.SESSION_SECRET
     }
 };
 

@@ -1,0 +1,17 @@
+nav.navbar.navbar-expand-sm.bg-dark.navbar-dark
+  a.navbar-brand(href='/') TextWeather
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#collapsibleNavbar')
+    span.navbar-toggler-icon
+  #collapsibleNavbar.collapse.navbar-collapse
+    ul.navbar-nav
+      if !currentUser
+        li.nav-item
+          a.nav-link(href='register') Sign Up
+      li.nav-item
+        a.nav-link(href='profile') My Profile
+      if currentUser
+        li.nav-item
+          a.nav-link(href='logout') Log Out
+      else
+        li.nav-item
+          a.nav-link(href='login') Login
